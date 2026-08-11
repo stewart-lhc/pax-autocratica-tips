@@ -7,7 +7,8 @@
 - 内容基线：2026-08-11；主游戏 Steam AppID 为 `1067360`。
 - 内容真实性：`已核验` 仅用于当前 Steam 商店、官方站点或开发者公开发言可支持的事实；`观察到` 表示官方媒体中可读但尚未在本地存档复现；`计划中` 不等于已上线功能。
 - 图片来源：`public/images/steam/` 为 Steam 官方媒体集，用于识别、评论与说明；相关商标和美术资产归 Multiverse 所有。
-- 发布状态：实现与本地验证工作进行中，**尚未部署**，没有 production URL、canonical host 或生产提交。
+- 发布状态：已通过 GitHub `main` 自动部署到 Cloudflare Pages，生产站为 [paxautocraticatips.com](https://paxautocraticatips.com/)，源码位于 [stewart-lhc/pax-autocratica-tips](https://github.com/stewart-lhc/pax-autocratica-tips)。
+- 搜索收录：Google Search Console 域名属性 `sc-domain:paxautocraticatips.com` 已完成 DNS 验证；`sitemap-index.xml` 提交成功并覆盖 12 个公开 URL。首页与 6 个核心内容页已加入优先抓取队列，其余页面由 sitemap 提供给 Google。
 
 ## 本地运行
 
