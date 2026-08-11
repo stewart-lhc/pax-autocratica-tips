@@ -1,0 +1,12 @@
+keyword,intent,category,page_type,slug,question,priority,language,source_terms,status
+Pax Autocratica 攻略,信息型,新手入门,guide,guide,开局先做什么？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
+Pax Autocratica wiki,信息型,机制资料,wiki,wiki,建筑、核心和武器有哪些已证实信息？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
+Pax Autocratica 策略,信息型,殖民与战斗,strategy,strategy,如何安排殖民地和远征？,P1,en-US,Steam store|developer AMA,已实现并通过浏览器验收
+Pax Autocratica tier list,信息型,核心排行,tier-list,tier-list,哪些核心值得优先测试？,P1,en-US,Steam store|YouTube,已实现并通过浏览器验收
+Pax Autocratica walkthrough,信息型,任务流程,walkthrough,walkthrough,已能核验的开局和区域目标是什么？,P1,en-US,Steam store|YouTube,已实现并通过浏览器验收
+Pax Autocratica 评测,商业调查,购买决策,review,review,Early Access 现在适合买么？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
+Pax Autocratica 多人联机,信息型,多人状态,multiplayer,multiplayer,当前是否支持联机或合作？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
+Pax Autocratica 配置,信息型,系统需求,requirements,requirements,电脑能否运行和推荐配置是什么？,P0,en-US,Steam store|Steam Community,已实现并通过浏览器验收
+Pax Autocratica 更新,信息型,版本追踪,updates,updates,哪些补丁改变了玩法建议？,P1,en-US,Steam store|Steam Community,已实现并通过浏览器验收
+Pax Autocratica 官网,导航型,官方链接,official-links,official-links,哪些入口是官方且如何避开仿冒站？,P0,en-US,Official site|Steam Community,已实现并通过浏览器验收
+Pax Autocratica 资料站,导航型,编辑政策,about,about,本站如何标注来源和纠错？,P2,en-US,Official site|Steam store,已实现并通过浏览器验收

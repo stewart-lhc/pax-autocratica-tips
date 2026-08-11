@@ -1,0 +1,6 @@
+observed_at,source_type,game_name,appid,metric,value,unit,region,window,query,source_url,evidence_path,notes
+2026-08-11,Steam store,Pax Autocratica,1067360,release_date,2026-08-10,date,global,current,Pax Autocratica,https://store.steampowered.com/app/1067360/Pax_Autocratica/,browser:steam-store,商店列出发行日与 Early Access 发行日均为 2026-08-10
+2026-08-11,Steam store,Pax Autocratica,1067360,review_summary,88%,positive reviews,global,current,Pax Autocratica,https://store.steampowered.com/app/1067360/Pax_Autocratica/,browser:steam-store,商店当时显示 431 条评测；动态数据，仅作为观察时点
+2026-08-11,Official website,Pax Autocratica,1067360,official_domain,paxautocratica.com,domain,global,current,Pax Autocratica official,https://paxautocratica.com/,browser:official-site,官方域名重定向至 www.paxautocratica.com
+2026-08-11,Steam Community,Pax Autocratica,1067360,active_topics,284,topics,global,current,Pax Autocratica discussions,https://steamcommunity.com/app/1067360/discussions/,browser:steam-community,页面显示 284 个最近活跃主题；含官方置顶和玩家问题，不将主题数量解释为销量或质量
+2026-08-11,Developer AMA,Pax Autocratica,1067360,launch_statement,Early Access launch,statement,global,launch day,Pax Autocratica AMA,https://www.reddit.com/r/Games/comments/1vkcn3d/ama_developer_of_pax_autocratica_here_a/,browser:reddit-ama,开发者自述游戏为殖民模拟与第一人称 roguelite 的组合；属于开发者公开陈述

@@ -1,0 +1,36 @@
+---
+import type { PageSection } from '@/data/site';
+import VideoEmbed from './VideoEmbed.astro';
+
+interface Props { section: PageSection; index: number; }
+const { section, index } = Astro.props;
+const id = section.heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+---
+<section class:list={['content-section', `section-${section.type}`]} id={id}>
+  <div class="section-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+  <div class="section-body">
+    {section.type !== 'callout' && <h2>{section.heading}</h2>}
+    {section.type === 'prose' && section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    {section.type === 'steps' && <>
+      {section.intro && <p class="section-intro">{section.intro}</p>}
+      <ol class="steps-list">
+        {section.items.map((item) => <li><span>{String(section.items.indexOf(item) + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></li>)}
+      </ol>
+    </>}
+    {section.type === 'facts' && <div class="fact-grid">
+      {section.items.map((item) => <article><span class:list={['status-dot', item.status || 'observed']}>{item.status || 'observed'}</span><h3>{item.label}</h3><p>{item.value}</p></article>)}
+    </div>}
+    {section.type === 'table' && <>
+      {section.intro && <p class="section-intro">{section.intro}</p>}
+      <div class="table-scroll" tabindex="0" role="region" aria-label={`${section.heading} table`}>
+        <table><thead><tr>{section.columns.map((column) => <th scope="col">{column}</th>)}</tr></thead><tbody>{section.rows.map((row) => <tr>{row.map((cell, cellIndex) => cellIndex === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody></table>
+      </div>
+    </>}
+    {section.type === 'gallery' && <div class="gallery-grid">
+      {section.items.map((item) => <figure><img src={item.src} alt={item.alt} loading="lazy" width="1920" height="1080" /><figcaption>{item.caption}<span>OFFICIAL STEAM MEDIA</span></figcaption></figure>)}
+    </div>}
+    {section.type === 'video' && <VideoEmbed videoId={section.videoId} title={section.title} summary={section.summary} />}
+    {section.type === 'faq' && <div class="faq-list">{section.items.map((item) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}</div>}
+    {section.type === 'callout' && <aside class:list={['callout', section.tone || 'intel']}><span>{section.tone === 'warning' ? 'CAUTION' : 'FIELD NOTE'}</span><h2>{section.heading}</h2><p>{section.text}</p></aside>}
+  </div>
+</section>

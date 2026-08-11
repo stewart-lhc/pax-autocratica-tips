@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "slug": "pax-autocratica-wiki",
+  "topic": "Pax Autocratica",
+  "primary_appid": "1067360",
+  "primary_score": null,
+  "created_at": "2026-08-11T15:26:19.284790+00:00",
+  "live_url": "",
+  "canonical_host": "",
+  "production_commit": "",
+  "deployment_id": "",
+  "cloudflare_zone_id": "",
+  "gsc_property": "",
+  "ga4_property_id": "",
+  "ga4_stream_id": "",
+  "stages": {
+    "1": "pending",
+    "2": "passed",
+    "3": "passed",
+    "4": "passed",
+    "5": "pending",
+    "6": "pending",
+    "7": "optional",
+    "8": "optional"
+  }
+}

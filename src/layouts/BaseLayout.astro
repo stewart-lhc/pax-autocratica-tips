@@ -1,0 +1,112 @@
+---
+import '@fontsource-variable/archivo';
+import '@fontsource/bebas-neue';
+import '@/styles/global.css';
+import { searchRecords, siteName } from '@/data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const { title, description, image = '/images/steam/colony-overview.jpg', noindex = false } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : null;
+const imageUrl = Astro.site ? new URL(image, Astro.site) : image;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  description,
+  url: canonical?.toString(),
+  inLanguage: 'en'
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#130f0d" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to intelligence</a>
+    <div class="ticker" aria-label="Site status">
+      <span>UNOFFICIAL FAN ARCHIVE</span>
+      <span>EARLY ACCESS · AUG 10 2026</span>
+      <span>FACTS ARE VERSIONED</span>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="The Autocrat's Index home">
+        <span class="brand-mark">AI</span>
+        <span><strong>THE AUTOCRAT'S INDEX</strong><small>PAX AUTOCRATICA FIELD MANUAL</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/guide/">START</a>
+        <a href="/wiki/">WIKI</a>
+        <a href="/strategy/">STRATEGY</a>
+        <a href="/updates/">UPDATES</a>
+      </nav>
+      <button class="search-trigger" type="button" data-open-search aria-haspopup="dialog"><kbd>/</kbd> SEARCH</button>
+    </header>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="/guide/">START</a>
+      <a href="/wiki/">WIKI</a>
+      <a href="/strategy/">STRATEGY</a>
+      <a href="/updates/">UPDATES</a>
+    </nav>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div>
+        <strong>{siteName}</strong>
+        <p>Independent, fan-made, and not affiliated with Multiverse. Game names and official screenshots belong to their respective owner.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/about/">Editorial policy</a>
+        <a href="/official-links/">Official links</a>
+        <a href="https://store.steampowered.com/app/1067360/Pax_Autocratica/" rel="external">Steam ↗</a>
+      </div>
+    </footer>
+
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+      <div class="search-frame">
+        <header><span id="search-title">QUERY THE ARCHIVE</span><button type="button" data-close-search aria-label="Close search">ESC</button></header>
+        <label for="site-search">What are you stuck on?</label>
+        <input id="site-search" data-search-input type="search" autocomplete="off" placeholder="Try: capture, co-op, cores, requirements…" />
+        <div class="search-results" data-search-results aria-live="polite"></div>
+        <p class="search-hint">Press <kbd>↑</kbd> <kbd>↓</kbd> to scan. Every result is a real page, not an empty tag.</p>
+      </div>
+    </dialog>
+    <script is:inline define:vars={{ searchRecords }}>
+      const dialog = document.querySelector('[data-search-dialog]');
+      const inputs = document.querySelectorAll('[data-search-input]');
+      const outputs = document.querySelectorAll('[data-search-results]');
+      const escapeHtml = (value) => value.replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+      const render = (query) => {
+        const normalized = query.trim().toLowerCase();
+        const matches = normalized ? searchRecords.filter((item) => `${item.title} ${item.description} ${item.terms}`.includes(normalized)).slice(0, 8) : searchRecords.slice(0, 6);
+        const html = matches.length ? matches.map((item) => `<a href="/${item.slug}/"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.description)}</span><b>OPEN →</b></a>`).join('') : `<div class="no-result"><strong>No filed report yet.</strong><span>Try a broader system name, or check the official/community links.</span><a href="/official-links/">OPEN LINK DESK →</a></div>`;
+        outputs.forEach((output) => output.innerHTML = html);
+      };
+      document.querySelectorAll('[data-open-search]').forEach((button) => button.addEventListener('click', () => { dialog.showModal(); setTimeout(() => dialog.querySelector('input').focus(), 0); render(''); }));
+      document.querySelectorAll('[data-close-search]').forEach((button) => button.addEventListener('click', () => dialog.close()));
+      inputs.forEach((input) => input.addEventListener('input', (event) => render(event.target.value)));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === '/' && document.activeElement?.tagName !== 'INPUT') { event.preventDefault(); dialog.showModal(); setTimeout(() => dialog.querySelector('input').focus(), 0); render(''); }
+        if (event.key === 'Escape' && dialog.open) dialog.close();
+      });
+      render('');
+    </script>
+  </body>
+</html>

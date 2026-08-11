@@ -1,0 +1,11 @@
+---
+interface Props { videoId: string; title: string; summary: string; }
+const { videoId, title, summary } = Astro.props;
+---
+<div class="video-card">
+  <a class="video-poster" href={`https://www.youtube.com/watch?v=${videoId}`} target="_blank" rel="external noreferrer" aria-label={`Watch ${title} on YouTube`}>
+    <img src="/images/steam/battlefield-mechs.jpg" alt="Large-scale Pax Autocratica battle used as the video preview" loading="lazy" width="1920" height="1080" />
+    <span class="play-button">▶</span><strong>WATCH OFFICIAL TRAILER ↗</strong>
+  </a>
+  <div><h3>{title}</h3><p>{summary}</p><a href={`https://www.youtube.com/watch?v=${videoId}`} target="_blank" rel="external noreferrer">Watch on YouTube ↗</a></div>
+</div>

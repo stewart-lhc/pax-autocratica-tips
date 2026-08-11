@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+.tmp-server/
+dogfood-output/
+*.auth-state.json
+

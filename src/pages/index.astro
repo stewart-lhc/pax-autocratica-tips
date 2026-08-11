@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { gameVersion, pageMap, pages, steamUrl } from '@/data/site';
+const title = 'Pax Autocratica Guide – Tips, Walkthrough & Strategy';
+const description = 'A source-checked Pax Autocratica guide hub with beginner help, wiki data, strategy, core watchlist, walkthrough objectives, multiplayer status and PC specs.';
+const primary = ['guide', 'wiki', 'strategy', 'walkthrough'].map((slug) => pageMap[slug]);
+---
+<BaseLayout title={title} description={description}>
+  <section class="home-hero">
+    <div class="hero-media"><img src="/images/steam/colony-overview.jpg" alt="A sprawling Pax Autocratica colony under an alien sky" width="1920" height="1080" fetchpriority="high" /><div class="hero-shade"></div></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">FIELD MANUAL 001 · EARLY ACCESS</span>
+        <h1>Build the State.<br /><em>Understand the machine.</em></h1>
+        <p>Pax Autocratica mixes a living colony, ugly policy choices and first-person roguelite warfare. This independent guide tells you what the game does, what it only plans to do, and what actually deserves your next ten minutes.</p>
+        <div class="hero-actions"><a class="button primary" href="/guide/">START THE FIRST HOUR</a><a class="button ghost" href={steamUrl}>VIEW ON STEAM ↗</a></div>
+      </div>
+      <aside class="launch-card"><span>STATUS / 11 AUG 2026</span><strong>EARLY ACCESS IS LIVE</strong><dl><div><dt>Mode</dt><dd>Single-player</dd></div><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Guide build</dt><dd>Launch-day verified</dd></div></dl><small>Co-op is planned, not shipped.</small></aside>
+    </div>
+    <div class="hero-index"><span>COLONY</span><span>EXPEDITIONS</span><span>CAPTURE</span><span>POLICY</span><span>CORES</span></div>
+  </section>
+
+  <section class="query-panel">
+    <div class="query-heading"><span>QUERY 01</span><h2>What are you trying to solve?</h2><p>Search the actual guide set. No empty category pages, no four copies of the same beginner article.</p></div>
+    <div class="home-search"><label for="home-search">Search the field manual</label><input id="home-search" data-search-input type="search" placeholder="capture, building, co-op, GPU…" /><div class="search-results" data-search-results></div></div>
+  </section>
+
+  <section class="route-section">
+    <header><span>PLAYER ROUTES</span><h2>Pick the problem, not the keyword.</h2></header>
+    <div class="route-grid">{primary.map((page, index) => <a href={`/${page.slug}/`} class="route-card"><span>{String(index + 1).padStart(2, '0')} / {page.status}</span><h3>{page.h1}</h3><p>{page.description}</p><b>OPEN REPORT →</b></a>)}</div>
+  </section>
+
+  <section class="split-feature">
+    <figure><img src="/images/steam/policy-choice.jpg" alt="Soldier Management showing assignments, traits and captives" width="1920" height="1080" loading="lazy" /><figcaption>OFFICIAL STEAM MEDIA · SOLDIER MANAGEMENT</figcaption></figure>
+    <div><span class="eyebrow">WHY THIS WIKI EXISTS</span><h2>The game hides real questions inside a very busy screen.</h2><p>A single worker can carry job speeds, fatigue, ideology, relationships and combat traits. The useful guide is not “build everything fast.” It tells you which number answers the decision in front of you.</p><ul><li><strong>9</strong> work stats visible in the roster</li><li><strong>3</strong> readable core cards transcribed</li><li><strong>1</strong> clear answer on multiplayer: not yet</li></ul><a href="/wiki/">QUERY THE DATABASE →</a></div>
+  </section>
+
+  <section class="briefing-section">
+    <header><span>THE WHOLE BRIEFING</span><h2>{pages.length} reports, each with a job.</h2></header>
+    <div class="brief-list">{pages.map((page) => <a href={`/${page.slug}/`}><span>{page.eyebrow}</span><strong>{page.h1}</strong><p>{page.dek}</p><b>→</b></a>)}</div>
+  </section>
+
+  <section class="trust-panel"><div><span>OUR EDITORIAL LINE</span><h2>No invented chapters. No imaginary co-op fix. No day-one “all weapons ranked.”</h2></div><p>Official facts, developer plans and screenshot observations wear different labels. Early Access changes quickly; every report names the date it was checked.</p><a href="/about/">READ THE SOURCE POLICY →</a></section>
+  <div class="version-ribbon">CURRENT GUIDE BASELINE · {gameVersion}</div>
+</BaseLayout>

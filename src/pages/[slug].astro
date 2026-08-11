@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionRenderer from '@/components/SectionRenderer.astro';
+import { gameVersion, pageMap, pages } from '@/data/site';
+
+export function getStaticPaths() {
+  return pages.map((page) => ({ params: { slug: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const toc = page.sections.map((section) => ({ label: section.heading, id: section.heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') }));
+const related = page.related.map((slug) => pageMap[slug]).filter(Boolean);
+const articleSchema = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: page.title, description: page.description,
+  dateModified: page.updated, inLanguage: 'en', isPartOf: { '@type': 'WebSite', name: 'The Autocrat\'s Index' }
+};
+---
+<BaseLayout title={page.title} description={page.description} image={page.image}>
+  <article class="article-shell">
+    <header class="article-hero">
+      <div class="article-hero-image"><img src={page.image} alt={page.imageAlt} width="1920" height="1080" fetchpriority="high" /><div class="image-scan" aria-hidden="true"></div></div>
+      <div class="article-hero-copy">
+        <span class="eyebrow">{page.eyebrow}</span>
+        <h1>{page.h1}</h1>
+        <p class="dek">{page.dek}</p>
+        <div class="evidence-strip"><span>{page.status}</span><span>{gameVersion}</span><span>Checked {page.updated}</span></div>
+      </div>
+    </header>
+    <div class="article-grid">
+      <aside class="toc"><strong>IN THIS REPORT</strong><nav>{toc.map((item, index) => <a href={`#${item.id}`}><span>{String(index + 1).padStart(2, '0')}</span>{item.label}</a>)}</nav><a class="toc-top" href="#main">↑ TOP</a></aside>
+      <div class="article-content">
+        {page.sections.map((section, index) => <SectionRenderer section={section} index={index} />)}
+        <section class="source-desk" id="sources"><span class="section-label">SOURCE DESK</span><h2>Where these claims came from</h2><p>Sources support the specific claims above; community posts are never silently upgraded into official facts.</p><ul>{page.sources.map((source) => <li><span>{source.kind}</span><a href={source.url} rel="external">{source.label} ↗</a></li>)}</ul></section>
+        <section class="next-reports"><span class="section-label">CONTINUE READING</span><div>{related.map((item) => <a href={`/${item.slug}/`}><span>{item.eyebrow}</span><strong>{item.h1}</strong><b>OPEN REPORT →</b></a>)}</div></section>
+      </div>
+    </div>
+  </article>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</BaseLayout>
