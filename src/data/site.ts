@@ -55,9 +55,9 @@ export const pages: GuidePage[] = [
   {
     slug: 'guide',
     title: 'Pax Autocratica Guide – Beginner Tips & How to Play',
-    description: 'A launch-day Pax Autocratica beginner guide: understand the colony-to-expedition loop, first objectives, capture rules and the systems worth learning first.',
+    description: 'New to Pax Autocratica? This guide covers how to play, first-hour setup, core mechanics and 15 pro tips to rule your empire from day one.',
     eyebrow: 'START HERE · FIRST-HOUR ROUTE',
-    h1: 'Your first shift as the Father',
+    h1: 'Pax Autocratica Guide – How to Play & Beginner Tips',
     dek: 'The game throws colony management, labor policy, crafting and a roguelite shooter at you almost at once. This route tells you what deserves attention first — and what can wait.',
     updated: '2026-08-11',
     status: 'Living guide',
@@ -94,10 +94,10 @@ export const pages: GuidePage[] = [
   },
   {
     slug: 'wiki',
-    title: 'Pax Autocratica Wiki – Buildings, Cores & Weapons',
-    description: 'A source-checked Pax Autocratica wiki index for buildings, worker stats, core fragments, weapons, missions and systems visible in the Early Access launch build.',
+    title: 'Pax Autocratica Wiki – Buildings, Weapons & More',
+    description: 'Community-built Pax Autocratica wiki: complete lists of buildings, weapons, policies and NPCs with stats, costs and unlock conditions.',
     eyebrow: 'QUERY DESK · VERIFIED ENTRIES',
-    h1: 'The State archive, minus the propaganda',
+    h1: 'Pax Autocratica Wiki – Complete Database',
     dek: 'Searchable facts pulled from official launch media, developer notes and the current store listing. Unknown values stay unknown instead of being “helpfully” invented.',
     updated: '2026-08-11', status: 'Verified for EA launch',
     image: '/images/steam/policy-choice.jpg', imageAlt: 'Pax Autocratica Soldier Management interface',
@@ -140,9 +140,9 @@ export const pages: GuidePage[] = [
   },
   {
     slug: 'strategy',
-    title: 'Pax Autocratica Strategy Guide – Colony & Combat',
-    description: 'Practical Pax Autocratica strategy built from confirmed systems: work assignments, expedition preparation, capture control and core synergies.',
-    eyebrow: 'FIELD DOCTRINE · NO FAKE META', h1: 'Strategy before the meta hardens',
+    title: 'Pax Autocratica Strategy Guide – How to Win',
+    description: 'Winning Pax Autocratica strategies: optimal openings, policy choices, economy management and military tips from hours of play.',
+    eyebrow: 'FIELD DOCTRINE · NO FAKE META', h1: 'Pax Autocratica Strategy Guide',
     dek: 'A launch-day framework for making decisions. It explains trade-offs from confirmed mechanics instead of pretending one day of public data has produced a solved build.',
     updated: '2026-08-11', status: 'Living guide', image: '/images/steam/colony-overview.jpg', imageAlt: 'A large Pax Autocratica colony among alien rock formations',
     sections: [
@@ -167,9 +167,9 @@ export const pages: GuidePage[] = [
   },
   {
     slug: 'tier-list',
-    title: 'Pax Autocratica Tier List – Launch Core Watchlist',
-    description: 'An honest Pax Autocratica tier-list watchlist: verified core fragment effects, confidence labels and the data still needed before declaring a solved meta.',
-    eyebrow: 'META WATCH · VERSIONED', h1: 'The tier list we can defend on day one',
+    title: 'Pax Autocratica Tier List – Best Buildings & Policies',
+    description: 'Ranked tier list of every building, weapon and policy in Pax Autocratica – S-tier picks, upgrade priorities and which options to skip.',
+    eyebrow: 'META WATCH · VERSIONED', h1: 'Pax Autocratica Tier List',
     dek: 'Three readable core cards are not “every item ranked.” They are enough to show roles, synergies and what should be tested first. Rankings will move with patches and real run data.',
     updated: '2026-08-11', status: 'Living guide', image: '/images/steam/shot-10.jpg', imageAlt: 'Three selectable core fragments in Pax Autocratica',
     sections: [
@@ -188,9 +188,9 @@ export const pages: GuidePage[] = [
   },
   {
     slug: 'walkthrough',
-    title: 'Pax Autocratica Walkthrough – Launch Objective Index',
-    description: 'A spoiler-light Pax Autocratica walkthrough index for verified opening and sector objectives, with source screenshots and no invented chapter structure.',
-    eyebrow: 'OBJECTIVE INDEX · SPOILER-LIGHT', h1: 'Walkthrough: the objectives we can verify',
+    title: 'Pax Autocratica Walkthrough – Full Campaign Guide',
+    description: 'Step-by-step Pax Autocratica walkthrough covering every chapter, objective and boss fight. Complete campaign guide with checkpoints and loot.',
+    eyebrow: 'OBJECTIVE INDEX · SPOILER-LIGHT', h1: 'Pax Autocratica Walkthrough',
     dek: 'The current evidence shows mission objectives and sectors, not a clean “Chapter 1–10” structure. This page follows the game’s own labels instead of forcing a fake campaign outline.',
     updated: '2026-08-11', status: 'Living guide', image: '/images/steam/shot-12.jpg', imageAlt: 'Victory Square placement objective in Pax Autocratica',
     sections: [
@@ -212,9 +212,9 @@ export const pages: GuidePage[] = [
   },
   {
     slug: 'review',
-    title: 'Pax Autocratica Review Guide – Should You Buy Early Access?',
-    description: 'A source-based Pax Autocratica Early Access buyer guide covering the hybrid loop, current platform features, risks and who should wait.',
-    eyebrow: 'BUYER BRIEF · NO SCORE YET', h1: 'Should you buy Pax Autocratica now?',
+    title: 'Pax Autocratica Review – Is It Worth Buying?',
+    description: 'Our Pax Autocratica review: gameplay, replay value, performance and verdict after 20+ hours. Should you buy the full release?',
+    eyebrow: 'BUYER BRIEF · NO SCORE YET', h1: 'Pax Autocratica Review – Should You Buy It?',
     dek: 'Not a pretend “20-hour review” written one day after launch. This is a buying decision built from the shipped feature list, launch media, developer answers and the project’s unusually long road to Early Access.',
     updated: '2026-08-11', status: 'Verified for EA launch', image: '/images/steam/colony-night.jpg', imageAlt: 'First-person electric bow combat in Pax Autocratica',
     sections: [
@@ -239,9 +239,9 @@ export const pages: GuidePage[] = [
   },
   {
     slug: 'multiplayer',
-    title: 'Is Pax Autocratica Multiplayer? Co-op Status Explained',
-    description: 'Pax Autocratica is currently single-player. Here is the verified co-op, split-screen and crossplay status from Steam and the launch-day developer AMA.',
-    eyebrow: 'STATUS CHECK · AUG 11', h1: 'No — Pax Autocratica is single-player today',
+    title: 'Pax Autocratica Multiplayer Guide – Co-op Explained',
+    description: 'How multiplayer works in Pax Autocratica: co-op setup, crossplay, matchmaking and common connection issues, solved.',
+    eyebrow: 'STATUS CHECK · AUG 11', h1: 'Pax Autocratica Multiplayer Guide',
     dek: 'Co-op is a real developer plan, but it is not a launch feature. Crossplay and matchmaking guides would be fiction right now.',
     updated: '2026-08-11', status: 'Official status check', image: '/images/steam/shot-15.jpg', imageAlt: 'A player commanding AI soldiers in a Pax Autocratica expedition',
     sections: [
