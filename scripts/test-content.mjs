@@ -3,13 +3,13 @@ import { readFile } from 'node:fs/promises';
 import { pages } from '../src/data/site.ts';
 
 const lockedTdh = {
-  guide: ['Pax Autocratica Guide – Beginner Tips & How to Play', 'New to Pax Autocratica? This guide covers how to play, first-hour setup, core mechanics and 15 pro tips to rule your empire from day one.', 'Pax Autocratica Guide – How to Play & Beginner Tips'],
-  'tier-list': ['Pax Autocratica Tier List – Best Buildings & Policies', 'Ranked tier list of every building, weapon and policy in Pax Autocratica – S-tier picks, upgrade priorities and which options to skip.', 'Pax Autocratica Tier List'],
-  strategy: ['Pax Autocratica Strategy Guide – How to Win', 'Winning Pax Autocratica strategies: optimal openings, policy choices, economy management and military tips from hours of play.', 'Pax Autocratica Strategy Guide'],
-  walkthrough: ['Pax Autocratica Walkthrough – Full Campaign Guide', 'Step-by-step Pax Autocratica walkthrough covering every chapter, objective and boss fight. Complete campaign guide with checkpoints and loot.', 'Pax Autocratica Walkthrough'],
-  review: ['Pax Autocratica Review – Is It Worth Buying?', 'Our Pax Autocratica review: gameplay, replay value, performance and verdict after 20+ hours. Should you buy the full release?', 'Pax Autocratica Review – Should You Buy It?'],
-  multiplayer: ['Pax Autocratica Multiplayer Guide – Co-op Explained', 'How multiplayer works in Pax Autocratica: co-op setup, crossplay, matchmaking and common connection issues, solved.', 'Pax Autocratica Multiplayer Guide'],
-  wiki: ['Pax Autocratica Wiki – Buildings, Weapons & More', 'Community-built Pax Autocratica wiki: complete lists of buildings, weapons, policies and NPCs with stats, costs and unlock conditions.', 'Pax Autocratica Wiki – Complete Database']
+  guide: ['Pax Autocratica Guide – Beginner Tips & How to Play', 'New to Pax Autocratica? Follow a 6-step first-hour route covering Victory Square, policy research, worker assignments, expedition prep and capture.', 'Pax Autocratica Guide – How to Play & Beginner Tips'],
+  'tier-list': ['Pax Autocratica Tier List – Launch Core Watchlist', 'A versioned Pax Autocratica tier-list watchlist for 3 readable launch-build core fragments, with verified effects, synergies and testing priorities.', 'Pax Autocratica Tier List'],
+  strategy: ['Pax Autocratica Strategy Guide – How to Win', 'A 4-step Pax Autocratica strategy framework for colony automation, mission squads, safer captures and core synergies, based on confirmed mechanics.', 'Pax Autocratica Strategy Guide'],
+  walkthrough: ['Pax Autocratica Walkthrough – Opening Objectives', 'A launch-build Pax Autocratica walkthrough for 2 opening colony directives and 3 Auryto sector objectives, with unverified boss details clearly marked.', 'Pax Autocratica Walkthrough'],
+  review: ['Pax Autocratica Review – Is It Worth Buying?', 'An evidence-based Pax Autocratica Early Access buyer guide covering the gameplay loop, current features, trade-offs and who should wait for updates.', 'Pax Autocratica Review – Should You Buy It?'],
+  multiplayer: ['Pax Autocratica Multiplayer Guide – Co-op Explained', 'Pax Autocratica is currently single-player on Steam. Co-op is planned during Early Access; no public ETA, crossplay or matchmaking details are confirmed.', 'Pax Autocratica Multiplayer Guide'],
+  wiki: ['Pax Autocratica Wiki – Buildings, Cores & Weapons', 'A source-checked Pax Autocratica wiki with 9 launch-build work sites, 3 readable core fragments, one weapon record and clearly labelled unknowns.', 'Pax Autocratica Wiki – Source-Checked Database']
 };
 
 const pageBySlug = Object.fromEntries(pages.map((page) => [page.slug, page]));
@@ -17,10 +17,19 @@ for (const [slug, [title, description, h1]] of Object.entries(lockedTdh)) {
   assert.deepEqual([pageBySlug[slug].title, pageBySlug[slug].description, pageBySlug[slug].h1], [title, description, h1], `${slug}: locked TDH changed`);
 }
 
+const stepCount = (slug, heading) => pageBySlug[slug].sections.find((section) => section.type === 'steps' && section.heading === heading)?.items.length;
+const rowCount = (slug, heading) => pageBySlug[slug].sections.find((section) => section.type === 'table' && section.heading === heading)?.rows.length;
+assert.equal(stepCount('guide', 'A sane first-hour order'), 6, 'guide: TDH count must match the 6 published steps');
+assert.equal(rowCount('wiki', 'Buildings and work sites visible at launch'), 9, 'wiki: TDH count must match the 9 published work sites');
+assert.equal(rowCount('wiki', 'Core fragments with readable launch values'), 3, 'wiki: TDH count must match the 3 readable core fragments');
+assert.equal(stepCount('strategy', 'The loop that actually matters'), 4, 'strategy: TDH count must match the 4 published strategy steps');
+assert.equal(stepCount('walkthrough', 'Opening colony directives'), 2, 'walkthrough: TDH count must match the 2 opening directives');
+assert.equal(stepCount('walkthrough', 'Auryto sector objective chain'), 3, 'walkthrough: TDH count must match the 3 Auryto objectives');
+
 const homepage = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
 for (const value of [
   'Pax Autocratica Guide – Tips, Walkthrough & Strategy',
-  'Complete Pax Autocratica guide hub: beginner tips, building tier list, full walkthrough, strategy guides and launch review. Everything a new ruler needs.',
+  'Source-checked Pax Autocratica guide hub with a 6-step beginner route, opening walkthrough, core watchlist, strategy, co-op status and PC requirements.',
   'Pax Autocratica Guide – Everything New Players Need'
 ]) assert.ok(homepage.includes(value), `homepage: locked TDH value missing: ${value}`);
 
