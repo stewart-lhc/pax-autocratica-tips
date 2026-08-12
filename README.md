@@ -9,7 +9,7 @@
 - 内容真实性：`已核验` 仅用于当前 Steam 商店、官方站点或开发者公开发言可支持的事实；`观察到` 表示官方媒体中可读但尚未在本地存档复现；`计划中` 不等于已上线功能。
 - 图片来源：`public/images/steam/` 为 Steam 官方媒体集，用于识别、评论与说明；相关商标和美术资产归 Multiverse 所有。
 - 发布状态：历史记录与 `ops/run.json` 已记录 GitHub `main` 触发的 Cloudflare Pages 外部集成、生产提交与站点 [paxautocraticatips.com](https://paxautocraticatips.com/)；源码位于 [stewart-lhc/pax-autocratica-tips](https://github.com/stewart-lhc/pax-autocratica-tips)。仓库没有生产部署 CLI、CI workflow 或部署状态查询；每次 push 后必须等待外部传播并完成线上 smoke check，不能仅凭 push 或本地构建宣称发布完成。
-- 搜索收录：Google Search Console 域名属性 `sc-domain:paxautocraticatips.com` 已完成 DNS 验证；`sitemap-index.xml` 提交成功并覆盖 12 个公开 URL。首页与 6 个核心内容页已加入优先抓取队列，其余页面由 sitemap 提供给 Google。
+- 搜索收录：Google Search Console 域名属性 `sc-domain:paxautocraticatips.com` 已完成 DNS 验证；`sitemap-index.xml` 提交成功并覆盖 12 个公开 URL。构建会从首页和各内容页的真实 `updated` 字段自动生成逐 URL `<lastmod>`，内容审计会阻断缺失或错误映射。首页与 6 个核心内容页已加入优先抓取队列，其余页面由 sitemap 提供给 Google。
 
 ## 本地运行
 

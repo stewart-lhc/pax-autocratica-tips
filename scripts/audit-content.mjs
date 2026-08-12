@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { pages } from '../src/data/site.ts';
+import { pages, sitemapLastmodByPathname } from '../src/data/site.ts';
 
 const root = fileURLToPath(new URL('../dist/', import.meta.url));
 const site = new URL(process.env.PUBLIC_SITE_URL || 'https://paxautocraticatips.com');
@@ -51,11 +51,30 @@ const sitemapIndex = await readFile(join(root, 'sitemap-index.xml'), 'utf8').cat
 const sitemap = await readFile(join(root, 'sitemap-0.xml'), 'utf8').catch(() => '');
 if (!sitemapIndex) failures.push('missing sitemap-index.xml');
 if (!sitemap) failures.push('missing sitemap-0.xml');
-const sitemapRoutes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => {
-  try { const url = new URL(match[1]); return url.host === site.host && url.protocol === site.protocol ? url.pathname : `INVALID:${match[1]}`; }
-  catch { return `INVALID:${match[1]}`; }
-}).sort();
-assert.deepEqual(sitemapRoutes, expectedRoutes, 'sitemap route set changed');
+const sitemapBlocks = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => match[1]);
+if (sitemapBlocks.length !== expectedRoutes.length) failures.push(`sitemap URL block count ${sitemapBlocks.length} does not match ${expectedRoutes.length}`);
+const sitemapRoutes = [];
+const seenSitemapRoutes = new Set();
+for (const [index, block] of sitemapBlocks.entries()) {
+  const locs = [...block.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const lastmods = [...block.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((match) => match[1]);
+  if (locs.length !== 1) { failures.push(`sitemap URL block ${index + 1}: expected exactly one loc, found ${locs.length}`); continue; }
+  if (lastmods.length !== 1) { failures.push(`sitemap URL block ${index + 1}: expected exactly one lastmod, found ${lastmods.length}`); continue; }
+  try {
+    const url = new URL(locs[0]);
+    if (url.host !== site.host || url.protocol !== site.protocol) { failures.push(`sitemap URL block ${index + 1}: invalid loc ${locs[0]}`); continue; }
+    const route = url.pathname;
+    sitemapRoutes.push(route);
+    if (seenSitemapRoutes.has(route)) failures.push(`duplicate sitemap loc ${route}`);
+    seenSitemapRoutes.add(route);
+    if (!Object.hasOwn(sitemapLastmodByPathname, route)) failures.push(`unexpected sitemap loc ${route}`);
+    else {
+      const expectedLastmod = new Date(`${sitemapLastmodByPathname[route]}T00:00:00Z`).toISOString();
+      if (lastmods[0] !== expectedLastmod) failures.push(`sitemap ${route}: lastmod ${lastmods[0]} does not match ${expectedLastmod}`);
+    }
+  } catch { failures.push(`sitemap URL block ${index + 1}: invalid loc ${locs[0]}`); }
+}
+assert.deepEqual([...sitemapRoutes].sort(), expectedRoutes, 'sitemap route set changed');
 for (const [title, files] of titles) if (files.length > 1) failures.push(`duplicate title ${title}: ${files.join(', ')}`);
 if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
 console.log(`Content audit passed: ${titles.size} HTML pages checked; ${expectedRoutes.length} routes and sitemap entries preserved.`);

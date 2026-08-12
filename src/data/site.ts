@@ -40,6 +40,7 @@ export type GuidePage = {
 
 export const siteName = 'The Autocrat\'s Index';
 export const gameVersion = 'Early Access launch build — Aug 10, 2026';
+export const homepageUpdated = '2026-08-13';
 export const steamUrl = 'https://store.steampowered.com/app/1067360/Pax_Autocratica/';
 export const officialUrl = 'https://paxautocratica.com/';
 
@@ -456,6 +457,11 @@ export const pages: GuidePage[] = [
 ];
 
 export const pageMap = Object.fromEntries(pages.map((page) => [page.slug, page]));
+
+export const sitemapLastmodByPathname = Object.freeze({
+  '/': homepageUpdated,
+  ...Object.fromEntries(pages.map((page) => [`/${page.slug}/`, page.updated]))
+});
 
 export const searchRecords = pages.map((page) => ({
   title: page.h1,

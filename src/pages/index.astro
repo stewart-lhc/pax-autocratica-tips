@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { gameVersion, pageMap, pages, steamUrl } from '@/data/site';
+import { gameVersion, homepageUpdated, pageMap, pages, steamUrl } from '@/data/site';
 const title = 'Pax Autocratica Guide – Tips, Walkthrough & Strategy';
 const description = 'Source-checked Pax Autocratica guide hub with a 6-step beginner route, opening walkthrough, core watchlist, strategy, co-op status and PC requirements.';
 const primary = ['guide', 'wiki', 'strategy', 'walkthrough'].map((slug) => pageMap[slug]);
@@ -42,4 +42,12 @@ const primary = ['guide', 'wiki', 'strategy', 'walkthrough'].map((slug) => pageM
 
   <section class="trust-panel"><div><span>OUR EDITORIAL LINE</span><h2>No invented chapters. No imaginary co-op fix. No day-one “all weapons ranked.”</h2></div><p>Official facts, developer plans and screenshot observations wear different labels. Early Access changes quickly; every report names the date it was checked.</p><a href="/about/">READ THE SOURCE POLICY →</a></section>
   <div class="version-ribbon">CURRENT GUIDE BASELINE · {gameVersion}</div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    dateModified: homepageUpdated,
+    inLanguage: 'en'
+  })} />
 </BaseLayout>

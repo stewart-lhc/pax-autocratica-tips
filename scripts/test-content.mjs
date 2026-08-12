@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { pages } from '../src/data/site.ts';
+import { homepageUpdated, pages, sitemapLastmodByPathname } from '../src/data/site.ts';
 
 const lockedTdh = {
   guide: ['Pax Autocratica Guide – Beginner Tips & How to Play', 'New to Pax Autocratica? Follow a 6-step first-hour route covering Victory Square, policy research, worker assignments, expedition prep and capture.', 'Pax Autocratica Guide – How to Play & Beginner Tips'],
@@ -18,6 +18,13 @@ const lockedTdh = {
 
 const pageBySlug = Object.fromEntries(pages.map((page) => [page.slug, page]));
 const expectedSlugs = ['guide', 'wiki', 'strategy', 'tier-list', 'walkthrough', 'review', 'multiplayer', 'requirements', 'updates', 'official-links', 'about'];
+const isoDate = /^\d{4}-\d{2}-\d{2}$/;
+const isValidDate = (value) => isoDate.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00Z`)) && new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
+assert.ok(isValidDate(homepageUpdated), `homepage updated date must be a real YYYY-MM-DD date: ${homepageUpdated}`);
+for (const page of pages) assert.ok(isValidDate(page.updated), `${page.slug}: updated must be a real YYYY-MM-DD date`);
+assert.deepEqual(Object.keys(sitemapLastmodByPathname).sort(), ['/', ...expectedSlugs.map((slug) => `/${slug}/`)].sort(), 'sitemap pathname mapping must cover homepage and every public page exactly once');
+assert.equal(sitemapLastmodByPathname['/'], homepageUpdated, 'homepage sitemap lastmod must use homepageUpdated');
+for (const page of pages) assert.equal(sitemapLastmodByPathname[`/${page.slug}/`], page.updated, `${page.slug}: sitemap lastmod must use pages.updated`);
 assert.deepEqual(pages.map((page) => page.slug), expectedSlugs, 'public slug set/order changed');
 for (const [slug, [title, description, h1]] of Object.entries(lockedTdh)) {
   assert.ok(pageBySlug[slug], `${slug}: expected public page missing`);
