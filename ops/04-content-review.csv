@@ -1,12 +1,12 @@
 slug,title_ok,description_ok,one_h1,facts_verified,links_ok,mobile_ok,reviewer,reviewed_at,notes
-guide,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,共享文章模板已通过桌面与移动视口；来源标识和相关页可访问
-wiki,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,桌面完整阅读；表格与官方截图可读；无控制台错误
-strategy,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,内容合同与共享响应式模板通过
-tier-list,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,明确标为版本化观察清单，未伪装成全量排行
-walkthrough,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,目标标签可检索；未虚构章节结构
-review,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,购买过滤器与官方 YouTube 视频直链均经浏览器复核；不保留失败的第三方 iframe
-multiplayer,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,站内搜索 co-op 可直达；当前单机与计划合作状态区分清楚
-requirements,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,390x844 视口表格区域可聚焦横向访问；移动导航修复后复验通过
-updates,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,版本日期和来源链接已纳入内容合同
-official-links,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,官方入口与仿冒域名警示分离；内部路由 200
-about,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-12T00:18:00+08:00,粉丝站披露和来源政策在全站可见
+guide,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,MVP1 新手清单、补丁边界和官方 12 分钟视频已复核；TDH 保持锁定
+wiki,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,新增系统登记和明确未知项有逐断言来源；桌面与移动表格可访问
+strategy,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,新增离线审计和捕获流程未虚构数值；相关内部路由可访问
+tier-list,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,新增版本化测试协议与停止条件；仍未伪装成全量排行
+walkthrough,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,新增任务卡点分诊与补丁范围；未虚构完整章节或隐藏路线
+review,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,825 条评测快照明确标注日期和非质量证明；两个 YouTube 直链有摘要回退
+multiplayer,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,当前单机与路线图 Online Co-op 计划分离；未声称 ETA、跨平台或匹配机制
+requirements,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,AG-12 稳定性条目未作性能保证；390x844 表格为容器内横向滚动
+updates,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,AG-12、Aug 11、已知问题和路线图状态可读；官方路线图 JPEG 有效
+official-links,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,backer 支持路径与周边未核验状态分离；仿冒域名警示保留
+about,pass,pass,pass,pass,pass,pass,Codex browser QA,2026-08-13T01:03:00+08:00,逐断言来源方法、社区信号边界和快照方法已复核；全站粉丝站披露存在

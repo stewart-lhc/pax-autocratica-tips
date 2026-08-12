@@ -1,12 +1,12 @@
 keyword,intent,category,page_type,slug,question,priority,language,source_terms,status
-Pax Autocratica 攻略,信息型,新手入门,guide,guide,开局先做什么？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
-Pax Autocratica wiki,信息型,机制资料,wiki,wiki,建筑、核心和武器有哪些已证实信息？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
-Pax Autocratica 策略,信息型,殖民与战斗,strategy,strategy,如何安排殖民地和远征？,P1,en-US,Steam store|developer AMA,已实现并通过浏览器验收
-Pax Autocratica tier list,信息型,核心排行,tier-list,tier-list,哪些核心值得优先测试？,P1,en-US,Steam store|YouTube,已实现并通过浏览器验收
-Pax Autocratica walkthrough,信息型,任务流程,walkthrough,walkthrough,已能核验的开局和区域目标是什么？,P1,en-US,Steam store|YouTube,已实现并通过浏览器验收
-Pax Autocratica 评测,商业调查,购买决策,review,review,Early Access 现在适合买么？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
-Pax Autocratica 多人联机,信息型,多人状态,multiplayer,multiplayer,当前是否支持联机或合作？,P0,en-US,Steam store|developer AMA,已实现并通过浏览器验收
-Pax Autocratica 配置,信息型,系统需求,requirements,requirements,电脑能否运行和推荐配置是什么？,P0,en-US,Steam store|Steam Community,已实现并通过浏览器验收
-Pax Autocratica 更新,信息型,版本追踪,updates,updates,哪些补丁改变了玩法建议？,P1,en-US,Steam store|Steam Community,已实现并通过浏览器验收
-Pax Autocratica 官网,导航型,官方链接,official-links,official-links,哪些入口是官方且如何避开仿冒站？,P0,en-US,Official site|Steam Community,已实现并通过浏览器验收
-Pax Autocratica 资料站,导航型,编辑政策,about,about,本站如何标注来源和纠错？,P2,en-US,Official site|Steam store,已实现并通过浏览器验收
+Pax Autocratica 攻略,信息型,新手入门,guide,guide,开局先做什么？如何避免存档/任务/Toxic Fog 卡点？,P0,en-US,Steam store|Steam Community AG-12|Aug 11 patch,已实现并通过浏览器验收；问题聚类已更新 2026-08-13
+Pax Autocratica wiki,信息型,机制资料,wiki,wiki,建筑、核心和武器有哪些已证实信息？士兵老化、Exile、自动备份怎么标注？,P0,en-US,Steam store|Steam Community AG-12|official YouTube,已实现并通过浏览器验收；计划项与当前机制分栏
+Pax Autocratica 策略,信息型,殖民与战斗,strategy,strategy,如何安排殖民地和远征？Infested Nest 与升级点数改动后怎么核对？,P1,en-US,Steam store|Steam Community AG-12|official YouTube,已实现并通过浏览器验收；不把社区评测当机制证据
+Pax Autocratica tier list,信息型,核心排行,tier-list,tier-list,哪些核心值得优先测试？如何区分视频展示与已证实效果？,P1,en-US,Steam store|official YouTube|community video (context only),已实现并通过浏览器验收；独立视频仅买家语境
+Pax Autocratica walkthrough,信息型,任务流程,walkthrough,walkthrough,已能核验的开局和区域目标是什么？遇到 V 键战斗统计问题怎么办？,P1,en-US,Steam store|official YouTube|Steam Community AG-12,已实现并通过浏览器验收；V 键列为官方已知问题
+Pax Autocratica 评测,商业调查,购买决策,review,review,Early Access 现在适合买么？825 条评测与路线图/联机计划意味着什么？,P0,en-US,Steam store|Steam Community allnews|community reviews|community videos (context only),已实现并通过浏览器验收；评测只用于买家问题聚类
+Pax Autocratica 多人联机,信息型,多人状态,multiplayer,multiplayer,当前是否支持联机或合作？路线图中的 online co-op 何时兑现？,P0,en-US,Steam store|Steam Community allnews|developer AMA,已实现并通过浏览器验收；当前商店标单人，联机为计划
+Pax Autocratica 配置,信息型,系统需求,requirements,requirements,电脑能否运行和推荐配置是什么？Windows/手柄支持如何核对？,P0,en-US,Steam store|Steam Community,已实现并通过浏览器验收；平台能力以商店当前页为准
+Pax Autocratica 更新,信息型,版本追踪,updates,updates,哪些补丁改变了玩法建议？AG-12 与 Aug 11 修复分别解决什么？,P1,en-US,Steam store|Steam Community AG-12|Aug 11 patch,已实现并通过浏览器验收；checked_at 2026-08-13
+Pax Autocratica 官网,导航型,官方链接,official-links,official-links,哪些入口是官方且如何避开仿冒站？官网、Steam、YouTube、Discord/背客流程从哪里进？,P0,en-US,Official site|Steam Community|official YouTube|backer thread,已实现并通过浏览器验收；未核验官方周边商店
+Pax Autocratica 资料站,导航型,编辑政策,about,about,本站如何标注来源和纠错？社区评测与独立视频哪些只能作为问题线索？,P2,en-US,Official site|Steam store|Steam Community reviews|community videos (context only),已实现并通过浏览器验收；来源层级与 claim-level ledger 于 2026-08-13 更新

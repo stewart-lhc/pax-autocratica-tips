@@ -9,11 +9,18 @@ const lockedTdh = {
   walkthrough: ['Pax Autocratica Walkthrough – Opening Objectives', 'A launch-build Pax Autocratica walkthrough for 2 opening colony directives and 3 Auryto sector objectives, with unverified boss details clearly marked.', 'Pax Autocratica Walkthrough'],
   review: ['Pax Autocratica Review – Is It Worth Buying?', 'An evidence-based Pax Autocratica Early Access buyer guide covering the gameplay loop, current features, trade-offs and who should wait for updates.', 'Pax Autocratica Review – Should You Buy It?'],
   multiplayer: ['Pax Autocratica Multiplayer Guide – Co-op Explained', 'Pax Autocratica is currently single-player on Steam. Co-op is planned during Early Access; no public ETA, crossplay or matchmaking details are confirmed.', 'Pax Autocratica Multiplayer Guide'],
-  wiki: ['Pax Autocratica Wiki – Buildings, Cores & Weapons', 'A source-checked Pax Autocratica wiki with 9 launch-build work sites, 3 readable core fragments, one weapon record and clearly labelled unknowns.', 'Pax Autocratica Wiki – Source-Checked Database']
+  wiki: ['Pax Autocratica Wiki – Buildings, Cores & Weapons', 'A source-checked Pax Autocratica wiki with 9 launch-build work sites, 3 readable core fragments, one weapon record and clearly labelled unknowns.', 'Pax Autocratica Wiki – Source-Checked Database'],
+  requirements: ['Pax Autocratica System Requirements & PC Checklist', 'Official Pax Autocratica minimum and recommended PC requirements, plus a practical launch checklist for Windows, storage, GPU memory and controller support.', 'Can your PC run Pax Autocratica?'],
+  updates: ['Pax Autocratica Updates – Early Access Patch Tracker', 'A concise Pax Autocratica update tracker connecting official patch notes to the guides, systems and strategies they change.', 'Updates that change how you play'],
+  'official-links': ['Pax Autocratica Official Links, Community & Scam Warning', 'Verified Pax Autocratica official website, Steam, Discord, YouTube and community links, plus the developer’s warning about an impersonation domain.', 'Official links, with the fake removed'],
+  about: ['About The Autocrat’s Index – Editorial & Source Policy', 'How this independent Pax Autocratica fan Wiki verifies gameplay facts, labels Early Access changes, credits media and corrects mistakes.', 'A fan guide with receipts']
 };
 
 const pageBySlug = Object.fromEntries(pages.map((page) => [page.slug, page]));
+const expectedSlugs = ['guide', 'wiki', 'strategy', 'tier-list', 'walkthrough', 'review', 'multiplayer', 'requirements', 'updates', 'official-links', 'about'];
+assert.deepEqual(pages.map((page) => page.slug), expectedSlugs, 'public slug set/order changed');
 for (const [slug, [title, description, h1]] of Object.entries(lockedTdh)) {
+  assert.ok(pageBySlug[slug], `${slug}: expected public page missing`);
   assert.deepEqual([pageBySlug[slug].title, pageBySlug[slug].description, pageBySlug[slug].h1], [title, description, h1], `${slug}: locked TDH changed`);
 }
 
