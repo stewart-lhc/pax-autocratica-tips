@@ -41,6 +41,8 @@ assert.equal(stepCount('walkthrough', 'Opening colony directives'), 2, 'walkthro
 assert.equal(stepCount('walkthrough', 'Auryto sector objective chain'), 3, 'walkthrough: TDH count must match the 3 Auryto objectives');
 
 const homepage = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
+const videoComponent = await readFile(new URL('../src/components/VideoEmbed.astro', import.meta.url), 'utf8');
+const sectionRenderer = await readFile(new URL('../src/components/SectionRenderer.astro', import.meta.url), 'utf8');
 for (const value of [
   'Pax Autocratica Guide – Tips, Walkthrough & Strategy',
   'Source-checked Pax Autocratica guide hub with a 6-step beginner route, opening walkthrough, core watchlist, strategy, co-op status and PC requirements.',
@@ -62,4 +64,20 @@ for (const page of pages) {
 }
 
 assert.equal(pages.some((page) => page.slug === 'beginner-guide'), false, 'duplicate beginner intent must stay merged into /guide/');
+
+const videoSections = pages.flatMap((page) => page.sections.filter((section) => section.type === 'video').map((section) => ({ page, section })));
+assert.ok(videoSections.length > 0, 'content must include at least one video section');
+for (const { page, section } of videoSections) {
+  assert.match(section.videoId, /^[A-Za-z0-9_-]{11}$/, `${page.slug}: videoId must be a valid 11-character YouTube ID`);
+}
+assert.match(sectionRenderer, /section\.type === 'video'\s*&&\s*<VideoEmbed\s+videoId=\{section\.videoId\}\s+title=\{section\.title\}\s+summary=\{section\.summary\}/, 'every video section must be rendered by VideoEmbed');
+assert.match(videoComponent, /data-video-embed/, 'VideoEmbed must scope player state per card');
+assert.match(videoComponent, /youtube-nocookie\.com\/embed\//, 'VideoEmbed must use the privacy-enhanced YouTube host');
+assert.match(videoComponent, /\?autoplay=1/, 'VideoEmbed must autoplay only after the in-page play action');
+assert.match(videoComponent, /referrerPolicy\s*=\s*['"]strict-origin-when-cross-origin['"]/, 'iframe referrer policy must be explicit');
+assert.match(videoComponent, /setAttribute\(['"]allowfullscreen['"]/, 'iframe must permit fullscreen');
+assert.match(videoComponent, /role="status"\s+aria-live="polite"/, 'video status must announce player state');
+assert.match(videoComponent, /<button[\s\S]*class="video-poster"[\s\S]*type="button"/, 'primary video action must be a keyboard-operable button');
+assert.doesNotMatch(videoComponent, /<a[\s\S]*class="video-poster"/, 'primary video action must not navigate away');
+assert.match(videoComponent, /class="video-fallback"[\s\S]*target="_blank"[\s\S]*noopener noreferrer external/, 'fallback link must remain a secure, secondary YouTube escape hatch');
 console.log(`Content contract passed: ${pages.length} evidence-backed pages checked.`);
